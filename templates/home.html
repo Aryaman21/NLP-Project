@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../static/form_style.css">
+    <link rel="stylesheet" href="../static/home.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/developerPg.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </link>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.5/umd/popper.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/dataTables.bootstrap4.js"></script>
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" /> -->
+</head>
+
+<body id="page-top">
+    <!-- Navigation-->
+    <div style="margin-top: 5px;">
+        <div class="container-fluid">
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li>
+                    <img
+                        src="https://image.shutterstock.com/shutterstock/photos/1585134601/display_1500/stock-vector-head-brain-nlp-icon-vector-neuro-linguistic-programming-logo-natural-language-processing-sign-1585134601.jpg"
+                        class="logo"  height="50px" width="80px">
+                </li>
+                <div class="d-flex flex-row bd-highlight">
+                    <div class="p-2 bd-highlight">
+                        <h4>
+                            Template Based Information Extraction
+                        </h4>
+                    </div>
+                </div>  
+            </ol>
+        </div>
+        <div class="row">
+            <div class="hidden-xs col-xl-1"></div>
+            <div class="col-xl-10 col-sm-12 mb-3">
+                <div class="card mb-3 Form-card">
+                    <div style="flex-direction: row; display: flex; justify-content: space-around;">
+                        <h4 class="text-center mb-3" style="text-decoration: underline;"><a href="/">Killing</a></h4>
+                        <h4 class="text-center mb-3" style="text-decoration: underline;"><a href="/">Kidnap</a></h4>
+                        <h4 class="text-center mb-3" style="text-decoration: underline;"><a href="/">Award</a></h4>
+                        <h4 class="text-center mb-3" style="text-decoration: underline;"><a href="/">Disease</a></h4>
+                    </div>
+                    
+                    <hr />
+                        <div class="row justify-content-between text-left">
+                            <div class="container">
+                                <div class="id_dropzone">
+                                    <div class="dz-message needsclick">
+                                        <h4 style="cursor: pointer;">Drop files here or click to upload.</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <form action="{{ url_for('home_result')}}" method="post" class="form-card">
+                        <div class="row justify-content-between text-end" style="display:flex; align-items: center; justify-content: center !important; margin-top: 10px;">
+                            <div class="form-group col-sm-4 flex-column d-flex" ><button type="submit"
+                                    class="btn-block btn-primary Form-btn-block"><b>Process</b></button></div>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <div class="hidden-xs col-xl-1"></div>
+        </div>
+    </div>
+    <footer class="sticky-footer">
+        <div class="container">
+            <div class="text-center">
+                <small>Copyright © Aryaman 2022</small>
+            </div>
+        </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="/">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" style="color: red;">Anomaly Detected</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <div>
+                            <h6>Explaination</h6>
+                        </div>
+                        <ul>
+                            <li><small>Counterparty : <b>....</b></small></li>
+                            <li><small>Entity : <b>....</b></small></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <script src="developerPg.js"></script> -->
+    <script>
+        Dropzone.autoDiscover = false;
+        $(document).ready(function(){
+            $(".id_dropzone").dropzone({
+              url: '/upload',
+              width: 300,
+              height: 300, 
+              progressBarWidth: '100%',
+              maxFileSize: '5MB'
+            })
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                "aLengthMenu": [[4, 10, 50, -1], [4, 10, 50, "All"]],
+                "iDisplayLength": 4
+            });
+        });
+
+        (function ($) {
+            "use strict"; // Start of use strict
+            // Configure tooltips for collapsed side navigation
+            $('.navbar-sidenav [data-toggle="tooltip"]').tooltip({
+                template: '<div class="tooltip navbar-sidenav-tooltip" role="tooltip" style="pointer-events: none;"><div class="arrow"></div><div class="tooltip-inner"></div></div>'
+            })
+            // Toggle the side navigation
+            $("#sidenavToggler").click(function (e) {
+                e.preventDefault();
+                $("body").toggleClass("sidenav-toggled");
+                $(".navbar-sidenav .nav-link-collapse").addClass("collapsed");
+                $(".navbar-sidenav .sidenav-second-level, .navbar-sidenav .sidenav-third-level").removeClass("show");
+            });
+            // Force the toggled class to be removed when a collapsible nav link is clicked
+            $(".navbar-sidenav .nav-link-collapse").click(function (e) {
+                e.preventDefault();
+                $("body").removeClass("sidenav-toggled");
+            });
+            // Prevent the content wrapper from scrolling when the fixed side navigation hovered over
+            $('body.fixed-nav .navbar-sidenav, body.fixed-nav .sidenav-toggler, body.fixed-nav .navbar-collapse').on('mousewheel DOMMouseScroll', function (e) {
+                var e0 = e.originalEvent,
+                    delta = e0.wheelDelta || -e0.detail;
+                this.scrollTop += (delta < 0 ? 1 : -1) * 30;
+                e.preventDefault();
+            });
+            // Scroll to top button appear
+            $(document).scroll(function () {
+                var scrollDistance = $(this).scrollTop();
+                if (scrollDistance > 100) {
+                    $('.scroll-to-top').fadeIn();
+                } else {
+                    $('.scroll-to-top').fadeOut();
+                }
+            });
+            // Configure tooltips globally
+            $('[data-toggle="tooltip"]').tooltip()
+            // Smooth scrolling using jQuery easing
+            $(document).on('click', 'a.scroll-to-top', function (event) {
+                var $anchor = $(this);
+                $('html, body').stop().animate({
+                    scrollTop: ($($anchor.attr('href')).offset().top)
+                }, 1000, 'easeInOutExpo');
+                event.preventDefault();
+            });
+        })(jQuery); // End of use strict
+    </script>
+</body>
+
+</html>

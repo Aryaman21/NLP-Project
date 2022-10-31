@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../static/form_style.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/developerPg.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </link>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.5/umd/popper.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/dataTables.bootstrap4.js"></script>
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <a class="navbar-brand" href="/developerPg">Trade Anomaly Detection</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <a class="nav-link" href="/developerPg">
+                        <i class="fa fa-fw fa-dashboard"></i>
+                        <span class="nav-link-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Chats">
+                    <a class="nav-link" href="devAddPlayer.html">
+                        <i class="fas fa-user-friends"></i>
+                        <span class="nav-link-text">Chat</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"
+                        data-parent="#exampleAccordion">
+                        <i class="fa fa-fw fa-wrench"></i>
+                        <span class="nav-link-text">User Stories</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapseComponents">
+                        <li>
+                            <a href="/classification">1) Classification</a>
+                        </li>
+                        <li>
+                            <a href="/detection">2) Detection</a>
+                        </li>
+                        <li>
+                            <a href="/user_story_3">3) User Story 3</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Chats">
+                    <a class="nav-link" href="/interpretation">
+                        <i class="fas fa-user-friends"></i>
+                        <span class="nav-link-text">Cluster Interpretation</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav sidenav-toggler">
+                <li class="nav-item">
+                    <a class="nav-link text-center" id="sidenavToggler">
+                        <i class="fa fa-fw fa-angle-left"></i>
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-fw fa-envelope"></i>
+                        <span class="d-lg-none">Messages
+                            <span class="badge badge-pill badge-primary">12 New</span>
+                        </span>
+                        <span class="indicator text-primary d-none d-lg-block">
+                            <i class="fa fa-fw fa-circle"></i>
+                        </span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="messagesDropdown">
+                        <h6 class="dropdown-header">New Messages:</h6>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">
+                            <strong>Chirah Chug</strong>
+                            <span class="small float-right text-muted">11:21 AM</span>
+                            <div class="dropdown-message small">Hey there! This new version of SB Admin is pretty
+                                awesome! These
+                                messages clip off when they reach the end of the box so they don't overflow over to the
+                                sides!</div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">
+                            <strong>Sameer</strong>
+                            <span class="small float-right text-muted">11:21 AM</span>
+                            <div class="dropdown-message small">I was wondering if you could meet for an appointment at
+                                3:00 instead
+                                of 4:00. Thanks!</div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">
+                            <strong>Suraj Gupta</strong>
+                            <span class="small float-right text-muted">11:21 AM</span>
+                            <div class="dropdown-message small">I've sent the final files over to you for review. When
+                                you're able to
+                                sign off of them let me know and we can discuss distribution.</div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item small" href="#">View all messages</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-fw fa-bell"></i>
+                        <span class="d-lg-none">Alerts
+                            <span class="badge badge-pill badge-warning">6 New</span>
+                        </span>
+                        <span class="indicator text-warning d-none d-lg-block">
+                            <i class="fa fa-fw fa-circle"></i>
+                        </span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="alertsDropdown">
+                        <h6 class="dropdown-header">New Alerts:</h6>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">
+                            <span class="text-success">
+                                <strong>
+                                    <i class="fa fa-long-arrow-up fa-fw"></i>Status Update</strong>
+                            </span>
+                            <span class="small float-right text-muted">11:21 AM</span>
+                            <div class="dropdown-message small">This is an automated server response message. All
+                                systems are online.
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">
+                            <span class="text-danger">
+                                <strong>
+                                    <i class="fa fa-long-arrow-down fa-fw"></i>Status Update</strong>
+                            </span>
+                            <span class="small float-right text-muted">11:21 AM</span>
+                            <div class="dropdown-message small">This is an automated server response message. All
+                                systems are online.
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">
+                            <span class="text-success">
+                                <strong>
+                                    <i class="fa fa-long-arrow-up fa-fw"></i>Status Update</strong>
+                            </span>
+                            <span class="small float-right text-muted">11:21 AM</span>
+                            <div class="dropdown-message small">This is an automated server response message. All
+                                systems are online.
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item small" href="#">View all alerts</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <form class="form-inline my-2 my-lg-0 mr-lg-2">
+                        <div class="input-group">
+                            <input class="form-control" type="text" placeholder="Search for...">
+                            <span class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                        <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="/user_story_3">User Stories</a>
+                </li>
+                <li class="breadcrumb-item active">User story 3</li>
+            </ol>
+
+        </div>
+        <div class="row">
+            <div class="hidden-xs col-xl-1"></div>
+            <div class="col-xl-10 col-sm-12 mb-3">
+                <div class="card mb-3 Form-card">
+                    <h5 class="text-center mb-3">Flagging trades which are anomalous to a particular client segment</h5>
+                    <hr />
+                    <form action="{{ url_for('segment_anomaly')}}" method="post" class="form-card">
+                        <div class="row justify-content-between text-left">
+                            <div class="form-group col-sm-4 flex-column d-flex"><label class="form-control-label px-3"
+                                    for="entity">Entity<span class="text-danger"> *</span></label>
+                                <select class="Form-input" id="entity" name="entity" onblur="validate(4)">
+                                    {% for o in data["list"][0] %}
+                                    <option value="{{ o }}">{{ o }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-4 flex-column d-flex"><label class="form-control-label px-3"
+                                    for="counterparty_name">Counterparty Name<span class="text-danger"> *</span></label>
+                                <select class="Form-input" id="counterparty_name" name="counterparty_name"
+                                    onblur="validate(1)">
+                                    {% for o in data["list"][1] %}
+                                    <option value="{{ o }}">{{ o }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-4 flex-column d-flex"><label class="form-control-label px-3"
+                                    for="product_types">Product_types<span class="text-danger"> *</span></label>
+                                <select class="Form-input" id="product_types" name="product_types" onblur="validate(5)">
+                                    {% for o in data["list"][2] %}
+                                    <option value="{{ o }}">{{ o }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row justify-content-between text-left">
+                            <div class="form-group col-sm-4 flex-column d-flex"><label class="form-control-label px-3"
+                                    for="currency_pairs">Currency Pairs<span class="text-danger"> *</span></label>
+                                <select class="Form-input" id="currency_pairs" name="currency_pairs"
+                                    onblur="validate(6)">
+                                    {% for o in data["list"][3] %}
+                                    <option value="{{ o }}">{{ o }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-4 flex-column d-flex"><label class="form-control-label px-3"
+                                    for="tenors">Tenors<span class="text-danger"> *</span></label>
+                                <select class="Form-input" id="tenors" name="tenors" onblur="validate(9)">
+                                    {% for o in data["list"][4] %}
+                                    <option value="{{ o }}">{{ o }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-4 flex-column d-flex"> <label
+                                    class="form-control-label px-3">Amount<span class="text-danger"> *</span></label>
+                                <input class="Form-input" type="text" id="amount" name="amount" placeholder=""
+                                    onblur="validate(7)">
+                            </div>
+                        </div>
+                        <div class="row justify-content-between text-left">
+
+
+                            <div class="form-group col-sm-4 flex-column d-flex"> <label
+                                    class="form-control-label px-3">Rate<span class="text-danger"> *</span></label>
+                                <input class="Form-input" type="text" id="rate" name="rate" placeholder=""
+                                    onblur="validate(8)">
+                            </div>
+                        </div>
+                        <div class="row justify-content-end">
+                            <div class="form-group col-sm-6"><button type="submit"
+                                    class="btn-block btn-primary Form-btn-block">Submit</button></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="hidden-xs col-xl-1"></div>
+        </div>
+    </div>
+
+    <footer class="sticky-footer">
+        <div class="container">
+            <div class="text-center">
+                <small>Copyright © iongroup 2022</small>
+            </div>
+        </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="/">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" style="color: red;">Anomaly Detected</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <div>
+                            <h6>Explaination</h6>
+                        </div>
+                        <ul>
+                            <li><small>Counterparty : <b>....</b></small></li>
+                            <li><small>Entity : <b>....</b></small></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="developerPg.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                "aLengthMenu": [[4, 10, 50, -1], [4, 10, 50, "All"]],
+                "iDisplayLength": 4
+            });
+        });
+
+        (function ($) {
+            "use strict"; // Start of use strict
+            // Configure tooltips for collapsed side navigation
+            $('.navbar-sidenav [data-toggle="tooltip"]').tooltip({
+                template: '<div class="tooltip navbar-sidenav-tooltip" role="tooltip" style="pointer-events: none;"><div class="arrow"></div><div class="tooltip-inner"></div></div>'
+            })
+            // Toggle the side navigation
+            $("#sidenavToggler").click(function (e) {
+                e.preventDefault();
+                $("body").toggleClass("sidenav-toggled");
+                $(".navbar-sidenav .nav-link-collapse").addClass("collapsed");
+                $(".navbar-sidenav .sidenav-second-level, .navbar-sidenav .sidenav-third-level").removeClass("show");
+            });
+            // Force the toggled class to be removed when a collapsible nav link is clicked
+            $(".navbar-sidenav .nav-link-collapse").click(function (e) {
+                e.preventDefault();
+                $("body").removeClass("sidenav-toggled");
+            });
+            // Prevent the content wrapper from scrolling when the fixed side navigation hovered over
+            $('body.fixed-nav .navbar-sidenav, body.fixed-nav .sidenav-toggler, body.fixed-nav .navbar-collapse').on('mousewheel DOMMouseScroll', function (e) {
+                var e0 = e.originalEvent,
+                    delta = e0.wheelDelta || -e0.detail;
+                this.scrollTop += (delta < 0 ? 1 : -1) * 30;
+                e.preventDefault();
+            });
+            // Scroll to top button appear
+            $(document).scroll(function () {
+                var scrollDistance = $(this).scrollTop();
+                if (scrollDistance > 100) {
+                    $('.scroll-to-top').fadeIn();
+                } else {
+                    $('.scroll-to-top').fadeOut();
+                }
+            });
+            // Configure tooltips globally
+            $('[data-toggle="tooltip"]').tooltip()
+            // Smooth scrolling using jQuery easing
+            $(document).on('click', 'a.scroll-to-top', function (event) {
+                var $anchor = $(this);
+                $('html, body').stop().animate({
+                    scrollTop: ($($anchor.attr('href')).offset().top)
+                }, 1000, 'easeInOutExpo');
+                event.preventDefault();
+            });
+        })(jQuery); // End of use strict
+    </script>
+</body>
+
+</html>

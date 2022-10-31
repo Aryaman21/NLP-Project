@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <title>Document</title>
+  <link rel="stylesheet" href="../static/developerPg.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </link>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.5/umd/popper.js"></script>
+  <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/dataTables.bootstrap4.js"></script>
+</head>
+
+<body id="page-top">
+    <!-- Navigation-->
+    <div style="margin-top: 5px;">
+        <div class="container-fluid">
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li>
+                    <img
+                        src="https://iongroup.com/wp-content/uploads/2016/09/iON_HBlu_Blu_Org@2x.png"
+                        class="logo"  height="50px" width="80px">
+                </li>
+                <div class="d-flex flex-row-reverse bd-highlight">
+                    <div class="p-2 bd-highlight">
+                        <h4>
+                            Trade Anomaly Detection
+                        </h4>
+                    </div>
+                </div>
+            </ol>
+        </div>
+    </div>
+  <!-- Navigation-->
+  <div class="content">
+    <div class="container-fluid">
+      <!-- Area Chart Example-->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fas fa-chart-area"></i> Anomaly Detected / date
+        </div>
+        <div class="card-body">
+          <canvas id="myAreaChart" width="100%" height="30"></canvas>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+      </div>
+
+      <!-- /.container-fluid-->
+      <!-- /.content-wrapper-->
+      <footer class="sticky-footer">
+        <div class="container">
+          <div class="text-center">
+            <small>Copyright © iongroup 2022</small>
+          </div>
+        </div>
+      </footer>
+      <!-- Scroll to Top Button-->
+      <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+      </a>
+      <!-- Logout Modal-->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+              <a class="btn btn-primary" href="/">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+      Chart.defaults.global.defaultFontColor = '#292b2c';
+      // -- Area Chart Example
+      var ctx = document.getElementById('myAreaChart').getContext('2d');
+      var myLineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ["June 1", "June 2", "June 3", "June 4", "June 5", "June 6", "June 7", "June 8", "June 9", "June 10", "June 11", "June 12", "June 13"],
+          datasets: [{
+            label: "Sessions",
+            lineTension: 0.3,
+            backgroundColor: "rgba(2,117,216,0.2)",
+            borderColor: "rgba(2,117,216,1)",
+            pointRadius: 5,
+            pointBackgroundColor: "rgba(2,117,216,1)",
+            pointBorderColor: "rgba(255,255,255,0.8)",
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(2,117,216,1)",
+            pointHitRadius: 20,
+            pointBorderWidth: 2,
+            data: {{ my_data|tojson }},
+          }],
+        },
+        options: {
+          scales: {
+            xAxes: [{
+              time: {
+                unit: 'date'
+              },
+              gridLines: {
+                display: false
+              },
+              ticks: {
+                maxTicksLimit: 7
+              }
+            }],
+            yAxes: [{
+              ticks: {
+                min: 0,
+                max: 40000,
+                maxTicksLimit: 5
+              },
+              gridLines: {
+                color: "rgba(0, 0, 0, .125)",
+              }
+            }],
+          },
+          legend: {
+            display: false
+          }
+        }
+      });
+
+    </script>
+    <script>
+      $(document).ready(function () {
+        $('#dataTable').DataTable({
+          "aLengthMenu": [[4, 10, 50, -1], [4, 10, 50, "All"]],
+          "iDisplayLength": 4
+        });
+      });
+
+      (function ($) {
+        "use strict"; // Start of use strict
+        // Configure tooltips for collapsed side navigation
+        $('.navbar-sidenav [data-toggle="tooltip"]').tooltip({
+          template: '<div class="tooltip navbar-sidenav-tooltip" role="tooltip" style="pointer-events: none;"><div class="arrow"></div><div class="tooltip-inner"></div></div>'
+        })
+        // Toggle the side navigation
+        $("#sidenavToggler").click(function (e) {
+          e.preventDefault();
+          $("body").toggleClass("sidenav-toggled");
+          $(".navbar-sidenav .nav-link-collapse").addClass("collapsed");
+          $(".navbar-sidenav .sidenav-second-level, .navbar-sidenav .sidenav-third-level").removeClass("show");
+        });
+        // Force the toggled class to be removed when a collapsible nav link is clicked
+        $(".navbar-sidenav .nav-link-collapse").click(function (e) {
+          e.preventDefault();
+          $("body").removeClass("sidenav-toggled");
+        });
+        // Prevent the content wrapper from scrolling when the fixed side navigation hovered over
+        $('body.fixed-nav .navbar-sidenav, body.fixed-nav .sidenav-toggler, body.fixed-nav .navbar-collapse').on('mousewheel DOMMouseScroll', function (e) {
+          var e0 = e.originalEvent,
+            delta = e0.wheelDelta || -e0.detail;
+          this.scrollTop += (delta < 0 ? 1 : -1) * 30;
+          e.preventDefault();
+        });
+        // Scroll to top button appear
+        $(document).scroll(function () {
+          var scrollDistance = $(this).scrollTop();
+          if (scrollDistance > 100) {
+            $('.scroll-to-top').fadeIn();
+          } else {
+            $('.scroll-to-top').fadeOut();
+          }
+        });
+        // Configure tooltips globally
+        $('[data-toggle="tooltip"]').tooltip()
+        // Smooth scrolling using jQuery easing
+        $(document).on('click', 'a.scroll-to-top', function (event) {
+          var $anchor = $(this);
+          $('html, body').stop().animate({
+            scrollTop: ($($anchor.attr('href')).offset().top)
+          }, 1000, 'easeInOutExpo');
+          event.preventDefault();
+        });
+      })(jQuery); // End of use strict
+    </script>
+</body>
+
+</html>
